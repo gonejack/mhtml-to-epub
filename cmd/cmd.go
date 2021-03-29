@@ -75,7 +75,7 @@ func (h *MHTMLToEpub) setAuthor() {
 	h.book.SetAuthor(h.Author)
 }
 func (h *MHTMLToEpub) setDesc() {
-	h.book.SetDescription(fmt.Sprintf("Epub generated at %s with github.com/gonejack/textbundle-to-epub", time.Now().Format("2006-01-02")))
+	h.book.SetDescription(fmt.Sprintf("Epub generated at %s with github.com/gonejack/mhtml-to-epub", time.Now().Format("2006-01-02")))
 }
 func (h *MHTMLToEpub) setCover() (err error) {
 	if h.Cover == "" {
