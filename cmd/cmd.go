@@ -20,8 +20,8 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/bmaupin/go-epub"
 	"github.com/gabriel-vasile/mimetype"
+	"github.com/gonejack/go-epub"
 )
 
 type MHTMLToEpub struct {
@@ -39,7 +39,10 @@ type MHTMLToEpub struct {
 
 func (h *MHTMLToEpub) Run(mhts []string, output string) (err error) {
 	if len(mhts) == 0 {
-		return errors.New("no mhts given")
+		mhts, _ = filepath.Glob("*.mht")
+	}
+	if len(mhts) == 0 {
+		return errors.New("no mht files given")
 	}
 
 	h.book = epub.NewEpub(h.Title)

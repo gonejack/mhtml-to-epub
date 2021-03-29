@@ -1,4 +1,4 @@
-# mht-to-epub
+# mhtml-to-epub
 
 Command line tool for converting mhtml to epub.
 
