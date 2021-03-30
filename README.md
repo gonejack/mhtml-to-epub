@@ -2,6 +2,9 @@
 
 Command line tool for converting mhtml to epub.
 
+![Build](https://github.com/gonejack/mhtml-to-epub/actions/workflows/go.yml/badge.svg)
+[![GitHub license](https://img.shields.io/github/license/gonejack/mhtml-to-epub.svg?color=blue)](LICENSE)
+
 ### Install
 ```shell
 > go get github.com/gonejack/mhtml-to-epub
