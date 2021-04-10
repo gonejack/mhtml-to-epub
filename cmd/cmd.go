@@ -39,9 +39,6 @@ type MHTMLToEpub struct {
 
 func (h *MHTMLToEpub) Run(mhts []string, output string) (err error) {
 	if len(mhts) == 0 {
-		mhts, _ = filepath.Glob("*.mht")
-	}
-	if len(mhts) == 0 {
 		return errors.New("no mht files given")
 	}
 
