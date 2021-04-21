@@ -143,25 +143,25 @@ func (h *MHTMLToEpub) processMHT(path string) (err error) {
 		return errors.New("html not found")
 	}
 
-	document, err := goquery.NewDocumentFromReader(bytes.NewReader(html.body))
+	doc, err := goquery.NewDocumentFromReader(bytes.NewReader(html.body))
 	if err != nil {
 		return
 	}
 
-	document = h.cleanDoc(document)
-	document.Find("img").Each(func(i int, img *goquery.Selection) {
+	doc = h.cleanDoc(doc)
+	doc.Find("img").Each(func(i int, img *goquery.Selection) {
 		h.changImgRef(img, parts)
 	})
 
 	var internalCSS string
-	document.Find(`link[type="text/css"]`).Each(func(i int, link *goquery.Selection) {
+	doc.Find(`link[type="text/css"]`).Each(func(i int, link *goquery.Selection) {
 		if internalCSS == "" {
 			internalCSS = h.changeCSSRef(link, parts)
 		}
 	})
 
-	title := document.Find("title").Text()
-	content, err := document.Find("body").Html()
+	title := doc.Find("title").Text()
+	content, err := doc.Find("body").Html()
 	if err != nil {
 		return
 	}
