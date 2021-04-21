@@ -6,18 +6,15 @@ import (
 	"crypto/md5"
 	"errors"
 	"fmt"
-	"mime"
-	"net/textproto"
-	"path/filepath"
-	"unicode"
-
 	"io"
 	"log"
-	"net/http"
-
+	"mime"
+	"net/textproto"
 	"os"
+	"path/filepath"
 	"strings"
 	"time"
+	"unicode"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gabriel-vasile/mimetype"
@@ -25,8 +22,6 @@ import (
 )
 
 type MHTMLToEpub struct {
-	client http.Client
-
 	DefaultCover []byte
 
 	Cover   string
@@ -53,7 +48,7 @@ func (h *MHTMLToEpub) Run(mhts []string, output string) (err error) {
 	}
 
 	for _, mht := range mhts {
-		err = h.addMHT(mht)
+		err = h.processMHT(mht)
 		if err != nil {
 			err = fmt.Errorf("parse %s failed: %s", mht, err)
 			return
@@ -102,7 +97,7 @@ func (h *MHTMLToEpub) setCover() (err error) {
 	return
 }
 
-func (h *MHTMLToEpub) addMHT(path string) (err error) {
+func (h *MHTMLToEpub) processMHT(path string) (err error) {
 	file, err := os.Open(path)
 	if err != nil {
 		return
@@ -175,7 +170,6 @@ func (h *MHTMLToEpub) addMHT(path string) (err error) {
 
 	return
 }
-
 func (h *MHTMLToEpub) changImgRef(img *goquery.Selection, parts map[string]*part) {
 	img.RemoveAttr("loading")
 	img.RemoveAttr("srcset")
