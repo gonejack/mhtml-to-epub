@@ -71,7 +71,7 @@ func (h *MHTMLToEpub) setDesc() {
 }
 func (h *MHTMLToEpub) setCover() (err error) {
 	if h.Cover == "" {
-		temp, err := os.CreateTemp("", "textbundle-to-epub")
+		temp, err := os.CreateTemp("", "mhtml-to-epub")
 		if err != nil {
 			return fmt.Errorf("cannot create tempfile: %s", err)
 		}
