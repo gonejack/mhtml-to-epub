@@ -18,7 +18,7 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gabriel-vasile/mimetype"
-	"github.com/gonejack/go-epub"
+	"github.com/gonejack/html-to-epub/go-epub"
 )
 
 type MHTMLToEpub struct {
