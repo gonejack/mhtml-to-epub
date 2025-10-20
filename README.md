@@ -13,7 +13,7 @@ Command line tool for converting mhtml to epub.
 
 ### Usage
 ```shell
-> mhtml-to-epub *.eml
+> mhtml-to-epub *.mht
 ```
 ```
 Usage:
